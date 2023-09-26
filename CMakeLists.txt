@@ -6,9 +6,15 @@ set(CMAKE_CXX_STANDARD 17)
 set(CORE_SOURCES
     "Core/Application.cpp"
     "Core/Input.cpp"
-    "Core/Game.hpp"
+    "Core/Game.hpp")
+
+set(GAME_SOURCES
     "Core/Games/MainMenu.cpp"
-    "Core/Games/Slots.cpp")
+    "Core/Games/Slots.cpp"
+    "Core/Games/Roulette.cpp"
+    "Core/Games/GoFish.cpp"
+    "Core/Games/Blackjack.cpp"
+    "Core/Games/Poker.cpp")
 
 set(RENDERER_SOURCES
     "Renderer/Shader.cpp"
@@ -24,7 +30,7 @@ set(OTHER_SOURCES
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/stb/stb.cpp")
 
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw")
-add_executable(CasinoLite main.cpp ${CORE_SOURCES} ${RENDERER_SOURCES} ${OTHER_SOURCES} )
+add_executable(CasinoLite main.cpp ${CORE_SOURCES} ${GAME_SOURCES} ${RENDERER_SOURCES} ${OTHER_SOURCES} )
 
 target_include_directories(${PROJECT_NAME}
         PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/vendor/glad/include"
