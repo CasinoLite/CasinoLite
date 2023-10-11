@@ -2,7 +2,8 @@
 
 #include <stb_image.h>
 
-Texture::Texture(const std::string& filepath) {
+Texture::Texture(const std::string& filepath)
+    :handle_(0) {
 	glGenTextures(1, &handle_);
 	glBindTexture(GL_TEXTURE_2D, handle_);
 	
@@ -30,6 +31,7 @@ std::shared_ptr<Texture> Texture::Create(const std::string& filepath) {
 }
 
 void Texture::Bind(uint32_t slot) const {
+    glActiveTexture(GL_TEXTURE0 + slot);
 	glBindTexture(GL_TEXTURE_2D, handle_);
 }
 

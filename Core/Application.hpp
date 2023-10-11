@@ -1,9 +1,9 @@
 #pragma once
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include "../Renderer/Renderer.hpp"
+#include "Window.hpp"
 
-#include "Game.hpp"
+#include "GameManager.hpp"
 
 class Application {
 public:
@@ -16,13 +16,9 @@ public:
         return pInstance_s;
     }
 
-    static void Run();
-
-    static const GLFWwindow* GetWindow() { return pWindow_s; };
-    static void SetActiveGame(Game* game) { pActiveGame_s = game; }
+    void Run();
 private:
-    static GLFWwindow* pWindow_s;
-    static Game* pActiveGame_s;
+    Window window_;
 private:
     Application();
     static Application* pInstance_s;

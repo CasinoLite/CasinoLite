@@ -5,8 +5,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(CORE_SOURCES
     "Core/Application.cpp"
+    "Core/Window.cpp"
     "Core/Input.cpp"
-    "Core/Game.hpp")
+    "Core/GameManager.cpp"
+)
 
 set(GAME_SOURCES
     "Core/Games/MainMenu.cpp"
@@ -27,7 +29,9 @@ set(RENDERER_SOURCES
 
 set(OTHER_SOURCES
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/glad/src/glad.c"
-    "${CMAKE_CURRENT_SOURCE_DIR}/vendor/stb/stb.cpp")
+    "${CMAKE_CURRENT_SOURCE_DIR}/vendor/stb/stb.cpp"
+        Core/Window.hpp
+        Core/GameManager.cpp)
 
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw")
 add_executable(CasinoLite main.cpp ${CORE_SOURCES} ${GAME_SOURCES} ${RENDERER_SOURCES} ${OTHER_SOURCES} )

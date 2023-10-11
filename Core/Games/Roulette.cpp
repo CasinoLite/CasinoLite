@@ -1,18 +1,18 @@
-#include "../Application.hpp"
-#include "../../Renderer/Renderer.hpp"
+#include "Games.hpp"
 
-#include <iostream>
+#include "../../Renderer/Renderer.hpp"
+#include "../Input.hpp"
 
 void Roulette::Init() {
 
 }
 
-void Roulette::Update() {
+void Roulette::Update(float ts) {
     if (Input::KeyDown(GLFW_KEY_ESCAPE)) {
-        std::cout << "going to main menu\n";
-        Application::SetActiveGame(Games::pMainMenu_g);
+        this->Close();
         return;
     }
+
 
     Renderer::ClearColor({ 0.0f, 1.0f, 0.0f, 1.0f });
 
@@ -25,5 +25,5 @@ void Roulette::Update() {
 }
 
 void Roulette::Terminate() {
-
+    delete this;
 }

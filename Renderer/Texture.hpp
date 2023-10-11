@@ -7,7 +7,7 @@
 
 class Texture {
 public:
-	Texture(const std::string& filepath);
+	explicit Texture(const std::string& filepath);
 	Texture(const Texture&) = delete;
 	~Texture();
 

@@ -1,16 +1,15 @@
-#include "../Application.hpp"
-#include "../../Renderer/Renderer.hpp"
+#include "Games.hpp"
 
-#include <iostream>
+#include "../../Renderer/Renderer.hpp"
+#include "../Input.hpp"
 
 void GoFish::Init() {
 
 }
 
-void GoFish::Update() {
+void GoFish::Update(float ts) {
     if (Input::KeyDown(GLFW_KEY_ESCAPE)) {
-        std::cout << "going to main menu\n";
-        Application::SetActiveGame(Games::pMainMenu_g);
+        this->Close();
         return;
     }
 
@@ -25,5 +24,5 @@ void GoFish::Update() {
 }
 
 void GoFish::Terminate() {
-
+    delete this;
 }
