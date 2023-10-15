@@ -5,10 +5,10 @@
 
 double GetTime() {
     using std::chrono::duration_cast;
-    using std::chrono::milliseconds;
+    using std::chrono::microseconds;
     using std::chrono::system_clock;
-    auto millis_since_epoch = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
-    return static_cast<double>(millis_since_epoch);
+    auto micros_since_epoch = duration_cast<microseconds>(system_clock::now().time_since_epoch()).count();
+    return static_cast<double>(micros_since_epoch) / 1000.0;
 }
 
 Application* Application::pInstance_s = nullptr;
@@ -29,19 +29,19 @@ Application::Application() {
 }
 
 void Application::Run() {
-    double ts = 0, end = 0;
-    auto start = GetTime();
+    float ts = 0;
+    double start = GetTime(), end = 0;
 
     while (!window_.ShouldClose()) {
         window_.Update();
 
         end = GetTime();
-        ts = end - start;
+        ts = static_cast<float>(end - start);
         start = end;
 
         GameManager::Update();
         auto game = GameManager::ActiveGame();
-        game->Update(0);
+        game->Update(ts);
     }
 
     GameManager::Terminate();

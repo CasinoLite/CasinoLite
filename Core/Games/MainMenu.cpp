@@ -22,7 +22,7 @@ void MainMenu::Update(float ts) {
         return;
     }
     if (Input::KeyDown(GLFW_KEY_3)) {
-        state_.nextGame = Game::GOFISH;
+        state_.nextGame = Game::GO_FISH;
         this->Close();
         return;
     }

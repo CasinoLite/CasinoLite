@@ -5,7 +5,7 @@ enum class Game {
     MAIN_MENU,
     SLOTS,
     ROULETTE,
-    GOFISH,
+    GO_FISH,
     BLACKJACK,
     POKER
 };
@@ -31,7 +31,7 @@ public:
     virtual void Terminate() = 0;
 
     // general for every game
-    inline GameState GetGameState() const { return state_; }
+    inline GameState& GetGameState() { return state_; }
 protected:
     inline void Close() { state_.shouldClose = true; }
 protected:
