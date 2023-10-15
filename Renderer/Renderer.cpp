@@ -14,7 +14,7 @@
 struct RendererData {
     // Primitives
     static const uint32_t MaxQuads = 1000;
-    static const uint32_t MaxTextureSlots = 32;
+    static const uint32_t MaxTextureSlots = 16;
 
     std::unique_ptr<VertexArray> quadVertexArray;
     std::unique_ptr<VertexBuffer> quadVertexBuffer;

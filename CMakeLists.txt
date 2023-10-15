@@ -15,8 +15,7 @@ set(GAME_SOURCES
     "Core/Games/Slots.cpp"
     "Core/Games/Roulette.cpp"
     "Core/Games/GoFish.cpp"
-    "Core/Games/Blackjack.cpp"
-    "Core/Games/Poker.cpp")
+        "Core/Games/Poker.cpp")
 
 set(RENDERER_SOURCES
     "Renderer/Shader.cpp"
@@ -31,7 +30,7 @@ set(OTHER_SOURCES
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/glad/src/glad.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/stb/stb.cpp"
         Core/Window.hpp
-        Core/GameManager.cpp GUI/GUI.cpp GUI/GUI.hpp)
+        Core/GameManager.cpp GUI/GUI.cpp GUI/GUI.hpp Core/Games/Games.hpp Core/Games/Blackjack.cpp)
 
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw")
 add_executable(CasinoLite main.cpp ${CORE_SOURCES} ${GAME_SOURCES} ${RENDERER_SOURCES} ${OTHER_SOURCES} )

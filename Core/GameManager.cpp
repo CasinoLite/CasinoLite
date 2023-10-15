@@ -21,7 +21,7 @@ void GameManager::Terminate() {
 void GameManager::GoTo(Game game) {
     activeGame_->Terminate();
     switch (game) {
-        case Game::EXIT:        std::exit(-1); // TODO: find better way to exit safely
+        case Game::EXIT:        std::exit(-1); // TODO (hunter): find better way to exit safely
         case Game::MAIN_MENU:   activeGame_ = new MainMenu; break;
         case Game::SLOTS:       activeGame_ = new Slots; break;
         case Game::ROULETTE:    activeGame_ = new Roulette; break;

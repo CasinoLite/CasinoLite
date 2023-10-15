@@ -18,6 +18,5 @@ private:
     static void GoTo(Game game);
 private:
     static GamePointer activeGame_;
-    static GameList games_;
 };
 

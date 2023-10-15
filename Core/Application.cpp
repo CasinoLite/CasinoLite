@@ -11,6 +11,12 @@ double GetTime() {
     return static_cast<double>(micros_since_epoch) / 1000.0;
 }
 
+struct Stats {
+    double ms_per_frame = 0.0f;
+    double avg_fps = 0.0f;
+};
+static Stats stats;
+
 Application* Application::pInstance_s = nullptr;
 
 Application::Application() {
@@ -37,7 +43,18 @@ void Application::Run() {
 
         end = GetTime();
         ts = static_cast<float>(end - start);
+        stats.ms_per_frame = end - start;
         start = end;
+
+        // calculate performance stats
+        static double timer = 1000.0, ts_acc = 0.0;
+        static uint32_t frame_count = 0;
+        if ((timer -= stats.ms_per_frame) <= 0.0f) {
+            stats.avg_fps = 1000.0 / (ts_acc / frame_count);
+            timer = 1000.0;
+        }
+        ts_acc += ts;
+        ++frame_count;
 
         GameManager::Update();
         auto game = GameManager::ActiveGame();
